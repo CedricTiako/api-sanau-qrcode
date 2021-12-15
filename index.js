@@ -22,7 +22,10 @@ app.use(express.json());
 
 // Connect to Mongoose and set connection variable
 // Deprecated: mongoose.connect('mongodb://localhost/resthub');
-mongoose.connect(process.env.MONGODB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true}, () => console.log("Connecter a la bd swb_maket"));
+mongoose.connect(process.env.MONGODB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true}, (error) =>{
+if(!error) console.log("Connecter a la bd sanauqrcode");
+else console.log("echec de connexion a la bd sanauqrcode" + error)
+});
 const cors = require('cors')
 
 app.use(cors({
