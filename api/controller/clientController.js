@@ -154,7 +154,42 @@ exports.addClients = async (req, res) =>{
         status: false,
         message: "Numero de telephone déjà utilisée!"
     });
-
+    if( (!req.body.nom) || req.body.nom==="")
+    return res.status(400).json({
+        status: false,
+        message: "Veuillez renseigner votre nom!"
+    });
+    if( (!req.body.prenom) || req.body.prenom==="")
+    return res.status(400).json({
+        status: false,
+        message: "Veuillez renseigner votre prenom!"
+    });
+    if( (!req.body.datenais) || req.body.datenais===null)
+    return res.status(400).json({
+        status: false,
+        message: "Veuillez renseigner votre date de naissance!"
+    });
+    if( (!req.body.pays) || req.body.pays==="")
+    return res.status(400).json({
+        status: false,
+        message: "Veuillez sélectionner votre pays!"
+    });
+    if( (!req.body.ville) || req.body.ville==="")
+    return res.status(400).json({
+        status: false,
+        message: "Veuillez renseigner votre ville!"
+    });
+    if( (!req.body.quartier) || req.body.quartier==="")
+    return res.status(400).json({
+        status: false,
+        message: "Veuillez renseigner votre quartier!"
+    });
+    if( (!req.body.sexe) || req.body.sexe==="")
+    return res.status(400).json({
+        status: false,
+        message: "Veuillez sélectionner votre sexe!"
+    });
+    
     const salt = await bcrypt.genSalt(10);
     let hashedPassword = await bcrypt.hash(req.body.password, salt);
 
